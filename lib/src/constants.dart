@@ -179,3 +179,9 @@ const List<Map<String, dynamic>> ISO4217 = [
   {'code': 'ZMW', 'number': 967, 'digits': 2},
   {'code': 'ZWL', 'number': 932, 'digits': 2}
 ];
+
+void validateCurrency(String? currency) {
+  if (currency != null && !ISO4217.map((e) => e["code"] as String).contains(currency)) {
+    throw ArgumentError.value(currency, "currency", "Currency is not a valid ISO4217 code");
+  }
+}
