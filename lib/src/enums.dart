@@ -1,4 +1,5 @@
 import 'package:lunchmoney/src/models/transaction.dart';
+import 'package:lunchmoney/src/models/asset.dart';
 
 /// The current status of a [Transaction]
 enum TransactionStatus {
@@ -110,6 +111,72 @@ enum RecurringSource {
   }
 }
 
+/// Primary type of the [Asset]
+enum AssetType {
+  cash,
+  credit,
+  investment,
+  realEstate,
+  loan,
+  vehicle,
+  cryptocurrency,
+  employeeCompensation,
+  otherLiability,
+  otherAsset,
+  unknown;
+
+  static AssetType fromString(String value) {
+    switch (value) {
+      case "cash":
+        return AssetType.cash;
+      case "credit":
+        return AssetType.credit;
+      case "investment":
+        return AssetType.investment;
+      case "real estate":
+        return AssetType.realEstate;
+      case "loan":
+        return AssetType.loan;
+      case "vehicle":
+        return AssetType.vehicle;
+      case "cryptocurrency":
+        return AssetType.cryptocurrency;
+      case "employee compensation":
+        return AssetType.employeeCompensation;
+      case "other liability":
+        return AssetType.otherLiability;
+      case "other asset":
+        return AssetType.otherAsset;
+      default:
+        return AssetType.unknown;
+    }
+  }
+}
+
+/// An optional [Asset] subtype
+enum AssetSubtype {
+  retirement,
+  checking,
+  savings,
+  prepaidCreditCard,
+  unknown;
+
+  static AssetSubtype fromString(String value) {
+    switch (value) {
+      case "retirement":
+        return AssetSubtype.retirement;
+      case "checking":
+        return AssetSubtype.checking;
+      case "savings":
+        return AssetSubtype.savings;
+      case "prepaid credit card":
+        return AssetSubtype.prepaidCreditCard;
+      default:
+        return AssetSubtype.unknown;
+    }
+  }
+}
+
 /// Status of associated manually-managed account.
 enum AssetStatus {
   active,
@@ -127,7 +194,7 @@ enum BudgetSuggest {
   unknown;
 
   static BudgetSuggest fromString(String value) {
-    switch(value) {
+    switch (value) {
       case "budgeted":
         return BudgetSuggest.budgeted;
       case "fixed":
