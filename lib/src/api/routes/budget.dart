@@ -4,7 +4,7 @@ import 'package:lunchmoney/src/constants.dart';
 import 'package:lunchmoney/src/api/models/budget.dart';
 
 /// A route class holding helper methods to send budget requests to the API.
-class BudgetRoute extends LunchMoneyBase {
+class BudgetRoute extends LunchMoneyBaseRoute {
   BudgetRoute(super.lunchMoney);
 
   /// Use this endpoint to get full details on the budgets for all budget-able categories between a certain time period.

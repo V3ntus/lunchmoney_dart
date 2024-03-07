@@ -3,7 +3,7 @@ import 'package:lunchmoney/src/api/http.dart';
 import 'package:lunchmoney/src/api/models/category.dart';
 
 /// A route class holding helper methods to send category requests to the API.
-class CategoryRoute extends LunchMoneyBase {
+class CategoryRoute extends LunchMoneyBaseRoute {
   CategoryRoute(super.lunchMoney);
 
   /// Use this endpoint to get a flattened list of all categories in

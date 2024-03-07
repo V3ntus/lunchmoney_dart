@@ -6,7 +6,7 @@ import 'package:lunchmoney/src/enums.dart';
 import 'package:lunchmoney/src/api/models/asset.dart';
 
 /// A route class holding helper methods to send asset requests to the API.
-class AssetRoute extends LunchMoneyBase {
+class AssetRoute extends LunchMoneyBaseRoute {
   AssetRoute(super.lunchMoney);
 
   /// Use this endpoint to get a list of all manually-managed assets associated with the user's account.

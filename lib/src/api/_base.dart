@@ -1,8 +1,8 @@
 import 'package:lunchmoney/src/client.dart';
 
-abstract class LunchMoneyBase {
+abstract class LunchMoneyBaseRoute {
   /// The current [LunchMoney] instance.
   final LunchMoney lunchMoney;
 
-  LunchMoneyBase(this.lunchMoney);
+  LunchMoneyBaseRoute(this.lunchMoney);
 }
