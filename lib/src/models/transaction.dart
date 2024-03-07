@@ -162,7 +162,7 @@ class Transaction implements LunchMoneyModel {
 
   /// User-defined external ID for any manually-entered or imported transaction. External ID cannot be accessed or
   /// changed for Plaid-imported transactions. External ID must be unique by asset_id. Max 75 characters.
-  final String externalId;
+  final String? externalId;
 
   Transaction({
     required this.id,
@@ -215,61 +215,71 @@ class Transaction implements LunchMoneyModel {
     required this.externalId,
   });
 
-  static Transaction fromMap(Map<String, dynamic> data) {
+  static Transaction fromJson(Map<String, dynamic> data) {
     return Transaction(
-      id: data['id'],
-      date: data['date'],
+      id: int.parse(data['id']),
+      date: DateTime.parse(data['date']),
       payee: data['payee'],
-      amount: data['amount'],
+      amount: double.parse(data['amount']),
       currency: data['currency'],
-      toBase: data['to_base'],
-      categoryId: data['category_id'],
+      toBase: double.parse(data['to_base']),
+      categoryId: int.tryParse(data['category_id']),
       categoryName: data['category_name'],
-      categoryGroupId: data['category_group_id'],
+      categoryGroupId: int.tryParse(data['category_group_id']),
       categoryGroupName: data['category_group_name'],
       isIncome: data['is_income'],
       excludeFromBudget: data['exclude_from_budget'],
       excludeFromTotals: data['exclude_from_totals'],
-      createdAt: data['created_at'],
-      updatedAt: data['updated_at'],
-      status: data['status'],
+      createdAt: DateTime.parse(data['created_at']),
+      updatedAt: DateTime.parse(data['updated_at']),
+      status: data['status'] != null ? TransactionStatus.fromString(data["status"]) : null,
       isPending: data['is_pending'],
       notes: data['notes'],
       originalName: data['original_name'],
-      recurringID: data['recurring_id'],
+      recurringID: int.tryParse(data['recurring_id']),
       recurringPayee: data['recurring_payee'],
       recurringDescription: data['recurring_description'],
-      recurringCadence: data['recurring_cadence'],
-      recurringType: data['recurring_type'],
-      recurringAmount: data['recurring_amount'],
+      recurringCadence:
+          data['recurring_cadence'] != null ? RecurringCadence.fromString(data['recurring_cadence']) : null,
+      recurringType: data['recurring_type'] != null ? RecurringType.fromString(data['recurring_type']) : null,
+      recurringAmount: double.tryParse(data['recurring_amount']),
       recurringCurrency: data['recurring_currency'],
-      parentId: data['parent_id'],
+      parentId: int.tryParse(data['parent_id']),
       hasChildren: data['has_children'],
-      groupId: data['group_id'],
+      groupId: int.tryParse(data['group_id']),
       isGroup: data['is_group'],
-      assetId: data['asset_id'],
+      assetId: int.tryParse(data['asset_id']),
       assetInstitutionName: data['asset_institution_name'],
       assetName: data['asset_name'],
       assetDisplayName: data['asset_display_name'],
-      assetStatus: data['asset_status'],
-      plaidAccountId: data['plaid_account_id'],
+      assetStatus: data['asset_status'] != null ? AssetStatus.fromString(data['asset_status']) : null,
+      plaidAccountId: int.tryParse(data['plaid_account_id']),
       plaidAccountName: data['plaid_account_name'],
       plaidAccountMask: data['plaid_account_mask'],
       institutionName: data['institution_name'],
       plaidAccountDisplayName: data['plaid_account_display_name'],
       plaidMetadata: data['plaid_metadata'],
-      source: data['source'],
+      source: TransactionSource.fromString(data['source']),
       displayName: data['display_name'],
       displayNotes: data['display_notes'],
       accountDisplayName: data['account_display_name'],
       tags: (data['tags'] != null)
           ? List<Tag>.from(
-              data['tags'].map((tag) => Tag.fromJson(tag)),
+              data['tags'].map(
+                (tag) => Tag.fromJson(tag),
+              ),
             )
           : null,
       children: (data['children'] != null)
           ? List<Transaction>.from(
-              data['children'].map((child) => fromMap(child)),
+              data['children'].map(
+                (child) => fromJson(
+                  {
+                    ...data,
+                    ...child,
+                  },
+                ),
+              ),
             )
           : null,
       externalId: data['external_id'],
