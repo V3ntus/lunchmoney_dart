@@ -54,9 +54,12 @@ class HTTPClient {
     ))
         .data;
     if (response is Map<String, dynamic>) {
-      // If there are errors present, throw them as an exception
+      // If there are error(s) present, throw as an exception
       if (response.containsKey("errors")) {
         throw HTTPException(response["errors"]);
+      }
+      if (response.containsKey("error")) {
+        throw HTTPException([response["error"]]);
       }
       return response;
     } else {
