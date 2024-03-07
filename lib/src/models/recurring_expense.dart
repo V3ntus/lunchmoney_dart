@@ -81,7 +81,7 @@ class RecurringExpense implements LunchMoneyModel {
 
   static RecurringExpense fromJson(Map<String, dynamic> data) {
     return RecurringExpense(
-      id: int.parse(data["id"]),
+      id: data["id"],
       startDate: DateTime.tryParse(data["start_date"]),
       endDate: DateTime.tryParse(data["end_date"]),
       cadence: Cadence.fromString(data["cadence"]),
@@ -95,8 +95,8 @@ class RecurringExpense implements LunchMoneyModel {
       source: RecurringSource.fromString(data["source"]),
       plaidAccountID: int.tryParse(data["plaid_account_id"]),
       assetID: int.tryParse(data["asset_id"]),
-      transactionID: int.tryParse(data["transaction_id"]),
-      categoryID: int.tryParse(data["category_id"]),
+      transactionID: int.tryParse("${data["transaction_id"]}"),
+      categoryID: int.tryParse("${data["category_id"]}"),
       createdAt: DateTime.parse(data["created_at"]),
     );
   }

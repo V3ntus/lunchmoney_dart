@@ -37,7 +37,7 @@ class User implements LunchMoneyModel {
 
   /// Construct a [User] object from [data].
   static fromJson(Map<String, dynamic> data) => User(
-        userID: int.parse(data["user_id"]),
+        userID: data["user_id"],
         userName: data["user_name"],
         userEmail: data["user_email"],
         accountID: data["account_id"],

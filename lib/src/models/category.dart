@@ -70,7 +70,7 @@ class Category implements LunchMoneyModel {
 
   /// Construct a [Category] object from [data].
   static fromJson(Map<String, dynamic> data) => Category(
-        id: int.parse(data["id"]),
+        id: data["id"],
         name: data["name"],
         description: data["description"],
         isIncome: data["is_income"],
