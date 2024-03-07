@@ -1,5 +1,6 @@
 import 'package:lunchmoney/src/models/transaction.dart';
 import 'package:lunchmoney/src/models/asset.dart';
+import 'package:lunchmoney/src/models/crypto.dart';
 import 'package:lunchmoney/src/models/plaid_account.dart';
 
 /// The current status of a [Transaction]
@@ -246,7 +247,6 @@ enum PlaidAccountStatus {
 
   /// Account is not supported by Plaid
   notSupported,
-
   unknown;
 
   static PlaidAccountStatus fromString(String value) {
@@ -269,4 +269,23 @@ enum PlaidAccountStatus {
         return PlaidAccountStatus.unknown;
     }
   }
+}
+
+/// The import source of a [Crypto] account.
+enum CryptoSource {
+  /// This account is synced via a wallet, exchange, etc.
+  synced,
+
+  /// This account balance is managed manually.
+  manual;
+
+  static CryptoSource fromString(String value) =>
+      CryptoSource.values.singleWhere((e) => value.toLowerCase().contains(e.name));
+}
+
+enum CryptoStatus {
+  active,
+  error;
+
+  static CryptoStatus fromString(String value) => CryptoStatus.values.singleWhere((e) => e.name.contains(value));
 }
