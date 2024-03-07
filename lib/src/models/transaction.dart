@@ -145,7 +145,7 @@ class Transaction implements LunchMoneyModel {
   final String displayName;
 
   /// Display notes for transaction based on whether or not it is linked to a recurring item.
-  /// If linked, returns [recurringNotes] field. Otherwise, returns the [notes] field.
+  /// If linked, returns recurring_notes field. Otherwise, returns the [notes] field.
   final String? displayNotes;
 
   /// Display name for associated account (manual or Plaid).
