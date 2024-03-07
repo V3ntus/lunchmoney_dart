@@ -28,6 +28,6 @@ class Tag implements LunchMoneyModel {
         id: int.parse(data["id"]),
         name: data["name"],
         description: data["description"],
-        archived: data["archived"],
+        archived: data["archived"] ?? false,
       );
 }
