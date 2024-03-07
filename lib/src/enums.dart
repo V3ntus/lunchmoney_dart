@@ -115,17 +115,22 @@ enum RecurringSource {
 
 /// Primary type of the [Asset]
 enum AssetType {
-  cash,
-  credit,
-  investment,
-  realEstate,
-  loan,
-  vehicle,
-  cryptocurrency,
-  employeeCompensation,
-  otherLiability,
-  otherAsset,
-  unknown;
+  cash("cash"),
+  credit("credit"),
+  investment("investment"),
+  realEstate("real estate"),
+  loan("loan"),
+  vehicle("vehicle"),
+  cryptocurrency("cryptocurrency"),
+  employeeCompensation("employee compensation"),
+  other("other"),
+  otherLiability("other liability"),
+  otherAsset("other asset"),
+  unknown("");
+
+  final String value;
+
+  const AssetType(this.value);
 
   static AssetType fromString(String value) {
     switch (value) {
@@ -145,6 +150,8 @@ enum AssetType {
         return AssetType.cryptocurrency;
       case "employee compensation":
         return AssetType.employeeCompensation;
+      case "other":
+        return AssetType.other;
       case "other liability":
         return AssetType.otherLiability;
       case "other asset":
@@ -157,11 +164,15 @@ enum AssetType {
 
 /// An optional [Asset] subtype
 enum AssetSubtype {
-  retirement,
-  checking,
-  savings,
-  prepaidCreditCard,
-  unknown;
+  retirement("retirement"),
+  checking("checking"),
+  savings("savings"),
+  prepaidCreditCard("prepaid credit card"),
+  unknown("");
+
+  final String value;
+
+  const AssetSubtype(this.value);
 
   static AssetSubtype fromString(String value) {
     switch (value) {
