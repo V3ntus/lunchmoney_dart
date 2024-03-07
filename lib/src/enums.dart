@@ -37,7 +37,7 @@ enum TransactionSource {
 }
 
 /// Cadence of associated recurring item.
-enum RecurringCadence {
+enum Cadence {
   weekly,
   everyTwoWeeks,
   bimonthly,
@@ -49,28 +49,28 @@ enum RecurringCadence {
   annually,
   unknown;
 
-  static RecurringCadence fromString(String value) {
+  static Cadence fromString(String value) {
     switch (value) {
       case "once a week":
-        return RecurringCadence.weekly;
+        return Cadence.weekly;
       case "every 2 weeks":
-        return RecurringCadence.everyTwoWeeks;
+        return Cadence.everyTwoWeeks;
       case "twice a month":
-        return RecurringCadence.bimonthly;
+        return Cadence.bimonthly;
       case "monthly":
-        return RecurringCadence.monthly;
+        return Cadence.monthly;
       case "every 2 months":
-        return RecurringCadence.everyTwoMonths;
+        return Cadence.everyTwoMonths;
       case "every 3 months":
-        return RecurringCadence.everyThreeMonths;
+        return Cadence.everyThreeMonths;
       case "every 4 months":
-        return RecurringCadence.everyFourMonths;
+        return Cadence.everyFourMonths;
       case "twice a year":
-        return RecurringCadence.biannually;
+        return Cadence.biannually;
       case "yearly":
-        return RecurringCadence.annually;
+        return Cadence.annually;
       default:
-        return RecurringCadence.unknown;
+        return Cadence.unknown;
     }
   }
 }
