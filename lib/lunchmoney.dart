@@ -1,3 +1,4 @@
 library lunchmoney;
 
-export 'src/client.dart';
+export 'package:lunchmoney/src/client.dart' show LunchMoney;
+export 'package:lunchmoney/src/models/_exports.dart';
