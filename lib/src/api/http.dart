@@ -32,10 +32,15 @@ class HTTPClient {
     String? content,
     Map<String, dynamic>? json,
   }) async {
-    final response = (await _dio.request(url,
-            options: Options(method: method, headers: {
-              "Authorization": "Bearer $_accessToken",
-            })))
+    final response = (await _dio.request(
+      url,
+      options: Options(
+        method: method,
+        headers: {
+          "Authorization": "Bearer $_accessToken",
+        },
+      ),
+    ))
         .data;
     if (response is Map<String, dynamic>) {
       // If there are errors present, throw them as an exception
