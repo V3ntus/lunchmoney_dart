@@ -77,12 +77,37 @@ enum RecurringCadence {
 
 /// The recurring item type.
 enum RecurringType {
+  /// The recurring expense has been reviewed by the user.
   cleared,
+
+  /// The recurring expense is suggested by the system; the user has yet to review/clear it.
   suggested,
+
+  /// The recurring expense has been dismissed by the user.
   dismissed;
 
   static RecurringType fromString(String value) =>
       RecurringType.values.singleWhere((e) => value.toLowerCase().contains(e.name));
+}
+
+/// The recurring item source.
+enum RecurringSource {
+  /// User created this recurring expense manually from the Recurring Expenses page.
+  manual,
+
+  /// User created this by converting a transaction from the Transactions page.
+  transaction,
+
+  /// Recurring expense was created by th system on transaction import.
+  system,
+
+  /// Some older recurring expenses may not have a source
+  none;
+
+  static RecurringSource fromString(String? value) {
+    if (value == null || value.isEmpty) return RecurringSource.none;
+    return RecurringSource.values.singleWhere((e) => value.toLowerCase().contains(e.name));
+  }
 }
 
 /// Status of associated manually-managed account.
