@@ -26,14 +26,17 @@ class HTTPClient {
   );
 
   /// Initiate a request. The access token gets injected into the Headers automatically.
-  Future<Map<String, dynamic>> request(
+  /// The API should return a JSON serializable object on normal error and success.
+  Future<dynamic> request(
     String method,
     String url, {
+    Map<String, dynamic>? queryParameters,
     String? content,
     Map<String, dynamic>? json,
   }) async {
     final response = (await _dio.request(
       url,
+      queryParameters: queryParameters,
       options: Options(
         method: method,
         headers: {
