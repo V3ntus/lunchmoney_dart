@@ -52,7 +52,11 @@ class HTTPClient {
       }
       return response;
     } else {
-      return jsonDecode(response);
+      try {
+        return jsonDecode(response);
+      } on FormatException {
+        return response;
+      }
     }
   }
 }
