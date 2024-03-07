@@ -11,8 +11,7 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   Future<List<Category>> get categories async =>
       ((await lunchMoney.http.request("GET", "/categories"))["categories"] as List<Map<String, dynamic>>)
           .map((e) => Category.fromJson(e))
-          .toList()
-          .cast<Category>();
+          .toList();
 
   /// Use this endpoint to get hydrated details on a single category.
   /// Note that if this category is part of a category group, its properties
