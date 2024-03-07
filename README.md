@@ -7,7 +7,7 @@ finance service.
 
 - [x] Fetch your user profile
 - [x] Fetch, create, and update assets
-- [ ] Fetch, upsert, and remove budgets
+- [x] Fetch, upsert, and remove budgets
 - [ ] Fetch, create, delete, and update a category
 - [ ] Create and add to a category group
 - [ ] Fetch and update crypto assets
