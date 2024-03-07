@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:lunchmoney/src/api/_base.dart';
 import 'package:lunchmoney/src/constants.dart';
 import 'package:lunchmoney/src/enums.dart';
-import 'package:lunchmoney/src/models/asset.dart';
+import 'package:lunchmoney/src/api/models/asset.dart';
 
 /// A route class holding helper methods to send asset requests to the API.
 class AssetRoute extends LunchMoneyBase {

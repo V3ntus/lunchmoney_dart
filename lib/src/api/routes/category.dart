@@ -1,6 +1,6 @@
 import 'package:lunchmoney/src/api/_base.dart';
 import 'package:lunchmoney/src/api/http.dart';
-import 'package:lunchmoney/src/models/category.dart';
+import 'package:lunchmoney/src/api/models/category.dart';
 
 /// A route class holding helper methods to send category requests to the API.
 class CategoryRoute extends LunchMoneyBase {

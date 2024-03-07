@@ -1,5 +1,5 @@
 import 'package:lunchmoney/src/enums.dart';
-import 'package:lunchmoney/src/models/_base.dart';
+import 'package:lunchmoney/src/api/models/_base.dart';
 
 class RecurringExpense implements LunchMoneyModel {
   /// Unique identifier for recurring expense.

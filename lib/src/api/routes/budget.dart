@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:lunchmoney/src/api/_base.dart';
 import 'package:lunchmoney/src/constants.dart';
-import 'package:lunchmoney/src/models/budget.dart';
+import 'package:lunchmoney/src/api/models/budget.dart';
 
 /// A route class holding helper methods to send budget requests to the API.
 class BudgetRoute extends LunchMoneyBase {

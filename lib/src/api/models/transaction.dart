@@ -1,7 +1,7 @@
 import 'package:lunchmoney/src/enums.dart';
-import 'package:lunchmoney/src/models/category.dart';
-import 'package:lunchmoney/src/models/_base.dart';
-import 'package:lunchmoney/src/models/tag.dart';
+import 'package:lunchmoney/src/api/models/category.dart';
+import 'package:lunchmoney/src/api/models/_base.dart';
+import 'package:lunchmoney/src/api/models/tag.dart';
 
 class Transaction implements LunchMoneyModel {
   /// Unique identifier for transaction.

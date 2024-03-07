@@ -1,4 +1,4 @@
-import 'package:lunchmoney/src/models/_base.dart';
+import 'package:lunchmoney/src/api/models/_base.dart';
 
 /// Represents an asset category
 class Category implements LunchMoneyModel {

@@ -1,5 +1,5 @@
 import 'package:lunchmoney/src/enums.dart';
-import 'package:lunchmoney/src/models/_base.dart';
+import 'package:lunchmoney/src/api/models/_base.dart';
 
 class PlaidAccount implements LunchMoneyModel {
   /// Unique identifier of the Plaid account

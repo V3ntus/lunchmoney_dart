@@ -1,7 +1,7 @@
-import 'package:lunchmoney/src/models/transaction.dart';
-import 'package:lunchmoney/src/models/asset.dart';
-import 'package:lunchmoney/src/models/crypto.dart';
-import 'package:lunchmoney/src/models/plaid_account.dart';
+import 'package:lunchmoney/src/api/models/transaction.dart';
+import 'package:lunchmoney/src/api/models/asset.dart';
+import 'package:lunchmoney/src/api/models/crypto.dart';
+import 'package:lunchmoney/src/api/models/plaid_account.dart';
 
 /// The current status of a [Transaction]
 enum TransactionStatus {
