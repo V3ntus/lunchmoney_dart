@@ -2,6 +2,14 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
+/// Thrown when the API sends an unexpected response.
+class UnknownResponseError extends Error {
+  final String message;
+
+  UnknownResponseError(this.message);
+}
+
+/// Generic HTTP error
 class HTTPException implements Exception {
   final List<String> errors;
 
