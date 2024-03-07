@@ -10,7 +10,7 @@ finance service.
 - [x] Fetch, upsert, and remove budgets
 - [x] Fetch, create, delete, and update a category
 - [x] Create and add to a category group
-- [ ] Fetch and update crypto assets
+- [x] Fetch and update crypto assets
 - [ ] Fetch Plaid accounts
 - [ ] Fetch recurring expenses
 - [ ] Fetch tags
