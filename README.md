@@ -8,8 +8,8 @@ finance service.
 - [x] Fetch your user profile
 - [x] Fetch, create, and update assets
 - [x] Fetch, upsert, and remove budgets
-- [ ] Fetch, create, delete, and update a category
-- [ ] Create and add to a category group
+- [x] Fetch, create, delete, and update a category
+- [x] Create and add to a category group
 - [ ] Fetch and update crypto assets
 - [ ] Fetch Plaid accounts
 - [ ] Fetch recurring expenses
