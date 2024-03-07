@@ -11,8 +11,8 @@ finance service.
 - [x] Fetch, create, delete, and update a category
 - [x] Create and add to a category group
 - [x] Fetch and update crypto assets
-- [ ] Fetch Plaid accounts
-- [ ] Fetch recurring expenses
+- [x] Fetch Plaid accounts
+- [x] Fetch recurring expenses
 - [ ] Fetch tags
 - [ ] Fetch, insert, update, and unsplit transactions
 - [ ] Fetch, create, and delete transaction groups
