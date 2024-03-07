@@ -5,6 +5,7 @@ import 'package:lunchmoney/src/constants.dart';
 import 'package:lunchmoney/src/enums.dart';
 import 'package:lunchmoney/src/models/asset.dart';
 
+/// A route class holding helper methods to send asset requests to the API.
 class AssetRoute extends LunchMoneyBase {
   AssetRoute(super.lunchMoney);
 
@@ -31,16 +32,14 @@ class AssetRoute extends LunchMoneyBase {
     bool excludeTransactions = false,
   }) async {
     if (subtype != null && subtype.length > 25) {
-      throw ArgumentError.value(subtype, "Subtype name cannot be more than 25 characters", "subtype");
+      throw ArgumentError.value(subtype, "subtype", "Subtype name cannot be more than 25 characters");
     }
 
     if (name.length > 45) {
-      throw ArgumentError.value(name, "Name cannot be more than 45 characters", "name");
+      throw ArgumentError.value(name, "name", "Name cannot be more than 45 characters");
     }
 
-    if (currency != null && !ISO4217.map((e) => e["code"] as String).contains(currency)) {
-      throw ArgumentError.value(currency, "Currency is not a valid ISO4217 code", "currency");
-    }
+    validateCurrency(currency);
 
     final json = {
       "type_name": type.value,
@@ -74,16 +73,14 @@ class AssetRoute extends LunchMoneyBase {
     bool excludeTransactions = false,
   }) async {
     if (subtype != null && subtype.length > 25) {
-      throw ArgumentError.value(subtype, "Subtype name cannot be more than 25 characters", "subtype");
+      throw ArgumentError.value(subtype, "subtype", "Subtype name cannot be more than 25 characters");
     }
 
     if (name != null && name.length > 45) {
-      throw ArgumentError.value(name, "Name cannot be more than 45 characters", "name");
+      throw ArgumentError.value(name, "name", "Name cannot be more than 45 characters");
     }
 
-    if (currency != null && !ISO4217.map((e) => e["code"] as String).contains(currency)) {
-      throw ArgumentError.value(currency, "Currency is not a valid ISO4217 code", "currency");
-    }
+    validateCurrency(currency);
 
     final json = {
       "type_name": type?.value,
