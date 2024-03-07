@@ -1,61 +1,8 @@
+import 'package:lunchmoney/src/enums.dart';
 import 'package:lunchmoney/src/models/category.dart';
 import 'package:lunchmoney/src/models/_base.dart';
 import 'package:lunchmoney/src/models/tag.dart';
 
-// TODO: Review this module, ensure data types are correct for Transaction, move enums to a more appropriate place
-// TODO: Tags returned are partial
-// TODO: Child transactions are partial
-
-enum TransactionStatus {
-  /// User has reviewed the transaction.
-  cleared,
-
-  /// User has not yet reviewed the transaction.
-  uncleared,
-
-  /// Transaction is linked to a recurring expense.
-  recurring,
-
-  /// Transaction is listed as a suggested transaction for an existing recurring expense.
-  recurringSuggested,
-
-  /// Imported transaction is marked as pending. This should be a temporary state.
-  pending;
-}
-
-enum RecurringCadence {
-  weekly,
-  everyTwoWeeks,
-  bimonthly,
-  monthly,
-  everyTwoMonths,
-  everyThreeMonths,
-  everyFourMonths,
-  biannually,
-  annually;
-}
-
-enum RecurringType {
-  cleared,
-  suggested,
-  dismissed;
-}
-
-enum AssetStatus {
-  active,
-  closed;
-}
-
-enum TransactionSource {
-  api,
-  csv,
-  manual,
-  merge,
-  plaid,
-  recurring,
-  rule,
-  user;
-}
 
 class Transaction implements LunchMoneyModel {
   /// Unique identifier for transaction.
