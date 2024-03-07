@@ -70,7 +70,7 @@ class AssetRoute extends LunchMoneyBase {
     String? currency,
     String? institutionName,
     DateTime? closedOn,
-    bool excludeTransactions = false,
+    bool? excludeTransactions,
   }) async {
     if (subtype != null && subtype.length > 25) {
       throw ArgumentError.value(subtype, "subtype", "Subtype name cannot be more than 25 characters");
