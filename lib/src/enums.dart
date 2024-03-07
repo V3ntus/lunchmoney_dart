@@ -118,3 +118,26 @@ enum AssetStatus {
   static AssetStatus fromString(String value) =>
       AssetStatus.values.singleWhere((e) => value.toLowerCase().contains(e.name));
 }
+
+enum BudgetSuggest {
+  budgeted,
+  fixed,
+  fixedRollover,
+  spent,
+  unknown;
+
+  static BudgetSuggest fromString(String value) {
+    switch(value) {
+      case "budgeted":
+        return BudgetSuggest.budgeted;
+      case "fixed":
+        return BudgetSuggest.fixed;
+      case "fixed-rollover":
+        return BudgetSuggest.fixedRollover;
+      case "spent":
+        return BudgetSuggest.spent;
+      default:
+        return BudgetSuggest.unknown;
+    }
+  }
+}
