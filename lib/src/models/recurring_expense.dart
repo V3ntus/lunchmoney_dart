@@ -15,7 +15,7 @@ class RecurringExpense implements LunchMoneyModel {
   final DateTime? endDate;
 
   /// Cadence of recurring expense.
-  final RecurringCadence cadence;
+  final Cadence cadence;
 
   /// Payee of the recurring expense.
   final String payee;
@@ -84,7 +84,7 @@ class RecurringExpense implements LunchMoneyModel {
       id: int.parse(data["id"]),
       startDate: DateTime.tryParse(data["start_date"]),
       endDate: DateTime.tryParse(data["end_date"]),
-      cadence: RecurringCadence.fromString(data["cadence"]),
+      cadence: Cadence.fromString(data["cadence"]),
       payee: data["payee"],
       amount: double.parse(data["amount"]),
       currency: data["currency"],

@@ -76,7 +76,7 @@ class Transaction implements LunchMoneyModel {
   final String? recurringDescription;
 
   /// Cadence of associated recurring item.
-  final RecurringCadence? recurringCadence;
+  final Cadence? recurringCadence;
 
   /// Type of associated recurring.
   final RecurringType? recurringType;
@@ -239,7 +239,7 @@ class Transaction implements LunchMoneyModel {
       recurringPayee: data['recurring_payee'],
       recurringDescription: data['recurring_description'],
       recurringCadence:
-          data['recurring_cadence'] != null ? RecurringCadence.fromString(data['recurring_cadence']) : null,
+          data['recurring_cadence'] != null ? Cadence.fromString(data['recurring_cadence']) : null,
       recurringType: data['recurring_type'] != null ? RecurringType.fromString(data['recurring_type']) : null,
       recurringAmount: double.tryParse(data['recurring_amount']),
       recurringCurrency: data['recurring_currency'],
