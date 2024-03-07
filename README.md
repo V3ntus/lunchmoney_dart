@@ -1,39 +1,42 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# lunchmoney
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A simple to use, asynchronous API wrapper for the [Lunch Money](https://lunchmoney.app/) personal
+finance service.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- [x] Fetch your user profile
+- [x] Fetch, create, and update assets
+- [ ] Fetch, upsert, and remove budgets
+- [ ] Fetch, create, delete, and update a category
+- [ ] Create and add to a category group
+- [ ] Fetch and update crypto assets
+- [ ] Fetch Plaid accounts
+- [ ] Fetch recurring expenses
+- [ ] Fetch tags
+- [ ] Fetch, insert, update, and unsplit transactions
+- [ ] Fetch, create, and delete transaction groups
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this library to your project:
+```
+dart pub add lunchmoney_dart
+```
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+import 'package:lunchmoney/lunchmoney.dart';
+
+void main() async {
+   final client = LunchMoney(ACCESS_TOKEN);
+
+   final user = await client.user.me;
+   print(user.userName);
+}
+
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+To learn more about the Lunch Money API, visit the [developer page](https://lunchmoney.dev/).
