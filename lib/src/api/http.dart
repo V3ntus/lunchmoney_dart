@@ -2,6 +2,17 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
+class HTTPException implements Exception {
+  final List<String> errors;
+
+  HTTPException(this.errors);
+
+  @override
+  String toString() {
+    return "HTTP error(s) occurred: ${errors.join(", ")}";
+  }
+}
+
 class HTTPClient {
   final String _accessToken;
 
@@ -27,6 +38,10 @@ class HTTPClient {
             })))
         .data;
     if (response is Map<String, dynamic>) {
+      // If there are errors present, throw them as an exception
+      if (response.containsKey("errors")) {
+        throw HTTPException(response["errors"]);
+      }
       return response;
     } else {
       return jsonDecode(response);
