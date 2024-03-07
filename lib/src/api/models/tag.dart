@@ -24,7 +24,7 @@ class Tag implements LunchMoneyModel {
   });
 
   /// Construct a [Tag] from [data].
-  static fromJson(Map<String, dynamic> data) => Tag(
+  static Tag fromJson(Map<String, dynamic> data) => Tag(
         id: data["id"],
         name: data["name"],
         description: data["description"],
