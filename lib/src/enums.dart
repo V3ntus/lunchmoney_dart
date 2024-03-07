@@ -1,5 +1,6 @@
 import 'package:lunchmoney/src/models/transaction.dart';
 import 'package:lunchmoney/src/models/asset.dart';
+import 'package:lunchmoney/src/models/plaid_account.dart';
 
 /// The current status of a [Transaction]
 enum TransactionStatus {
@@ -205,6 +206,67 @@ enum BudgetSuggest {
         return BudgetSuggest.spent;
       default:
         return BudgetSuggest.unknown;
+    }
+  }
+}
+
+/// Primary type of [PlaidAccount]
+enum PlaidAccountType {
+  credit,
+  depository,
+  brokerage,
+  cash,
+  loan,
+  investment;
+
+  static PlaidAccountType fromString(String value) =>
+      PlaidAccountType.values.singleWhere((e) => value.toLowerCase().contains(e.name));
+}
+
+/// Denots the current status of the [PlaidAccount] within Lunch Money.
+enum PlaidAccountStatus {
+  /// Account is active and in good state.
+  active,
+
+  /// Account marked inactive from user. No transactions fetched or
+  /// balance update for this account.
+  inactive,
+
+  /// Account needs to be relinked with Plaid.
+  relink,
+
+  /// Account is awaiting first import of transactions.
+  syncing,
+
+  /// Account is in error with Plaid.
+  error,
+
+  /// Account was not found with Plaid.
+  notFound,
+
+  /// Account is not supported by Plaid
+  notSupported,
+
+  unknown;
+
+  static PlaidAccountStatus fromString(String value) {
+    switch (value) {
+      case "active":
+        return PlaidAccountStatus.active;
+      case "inactive":
+        return PlaidAccountStatus.inactive;
+      case "relink":
+        return PlaidAccountStatus.relink;
+      case "syncing":
+        return PlaidAccountStatus.syncing;
+      case "error":
+        return PlaidAccountStatus.error;
+      case "not found":
+        return PlaidAccountStatus.notFound;
+      case "not supported":
+        return PlaidAccountStatus.notSupported;
+      default:
+        return PlaidAccountStatus.unknown;
     }
   }
 }
