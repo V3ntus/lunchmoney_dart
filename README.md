@@ -13,9 +13,9 @@ finance service.
 - [x] Fetch and update crypto assets
 - [x] Fetch Plaid accounts
 - [x] Fetch recurring expenses
-- [ ] Fetch tags
-- [ ] Fetch, insert, update, and unsplit transactions
-- [ ] Fetch, create, and delete transaction groups
+- [x] Fetch tags
+- [x] Fetch, insert, update, and unsplit transactions
+- [x] Fetch, create, and delete transaction groups
 
 ## Getting started
 
