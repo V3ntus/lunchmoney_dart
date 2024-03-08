@@ -58,9 +58,11 @@ class HTTPClient {
       if (response.containsKey("errors")) {
         throw HTTPException(response["errors"]);
       }
+
       if (response.containsKey("error")) {
-        throw HTTPException([response["error"]]);
+        throw HTTPException(response["error"] is List ? response["error"] : [response["error"]]);
       }
+
       return response;
     } else {
       try {
