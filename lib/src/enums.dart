@@ -6,19 +6,23 @@ import 'package:lunchmoney/src/api/models/plaid_account.dart';
 /// The current status of a [Transaction]
 enum TransactionStatus {
   /// User has reviewed the transaction.
-  cleared,
+  cleared("cleared"),
 
   /// User has not yet reviewed the transaction.
-  uncleared,
+  uncleared("uncleared"),
 
   /// Transaction is linked to a recurring expense.
-  recurring,
+  recurring("recurring"),
 
   /// Transaction is listed as a suggested transaction for an existing recurring expense.
-  recurringSuggested,
+  recurringSuggested("recurring suggested"),
 
   /// Imported transaction is marked as pending. This should be a temporary state.
-  pending;
+  pending("pending");
+
+  final String value;
+
+  const TransactionStatus(this.value);
 
   static TransactionStatus fromString(String value) =>
       TransactionStatus.values.singleWhere((e) => value.toLowerCase().contains(e.name));
