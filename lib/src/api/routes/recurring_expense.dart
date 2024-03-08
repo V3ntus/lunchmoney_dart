@@ -2,6 +2,9 @@ import 'package:intl/intl.dart';
 import 'package:lunchmoney/src/api/_base.dart';
 import 'package:lunchmoney/src/api/models/recurring_expense.dart';
 
+/// A route class holding helper methods to send recurring expenses requests to the API.
+///
+/// Reference: https://lunchmoney.dev/#recurring-expenses
 class RecurringExpensesRoute extends LunchMoneyBaseRoute {
   RecurringExpensesRoute(super.lunchMoney);
 
@@ -24,6 +27,8 @@ class RecurringExpensesRoute extends LunchMoneyBaseRoute {
   ///
   /// [debitAsNegative] should be true if you’d like expenses to be returned as negative amounts
   /// and credits as positive amounts.
+  ///
+  /// Reference: https://lunchmoney.dev/#get-recurring-expenses
   Future<List<RecurringExpense>> recurringExpenses({
     DateTime? startDate,
     bool debitAsNegative = false,

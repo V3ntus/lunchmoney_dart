@@ -3,11 +3,15 @@ import 'package:lunchmoney/src/api/http.dart';
 import 'package:lunchmoney/src/api/models/category.dart';
 
 /// A route class holding helper methods to send category requests to the API.
+///
+/// Reference: https://lunchmoney.dev/#categories
 class CategoryRoute extends LunchMoneyBaseRoute {
   CategoryRoute(super.lunchMoney);
 
   /// Use this endpoint to get a flattened list of all categories in
   /// alphabetical order associated with the user's account.
+  ///
+  /// Reference: https://lunchmoney.dev/#get-all-categories
   Future<List<Category>> get categories async =>
       ((await lunchMoney.http.request("GET", "/categories"))["categories"] as List<Map<String, dynamic>>)
           .map((e) => Category.fromJson(e))
@@ -16,11 +20,15 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   /// Use this endpoint to get hydrated details on a single category.
   /// Note that if this category is part of a category group, its properties
   /// (is_income, exclude_from_budget, exclude_from_totals) will inherit from the category group.
+  ///
+  /// Reference: https://lunchmoney.dev/#get-single-category
   Future<Category> category(int categoryID) async => Category.fromJson(
         ((await lunchMoney.http.request("GET", "/categories/:$categoryID"))["categories"] as Map<String, dynamic>),
       );
 
   /// Use this endpoint to create a single category. Returns the ID of the category provided.
+  ///
+  /// Reference: https://lunchmoney.dev/#create-category
   Future<int> createCategory(
       {required String name,
       String? description,
@@ -52,6 +60,8 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   }
 
   /// Use this endpoint to update the properties for a single category or category group.
+  ///
+  /// Reference: https://lunchmoney.dev/#update-category
   Future<bool> updateCategory(int categoryID,
       {String? name,
       String? description,
@@ -88,6 +98,8 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   ///
   /// [categoryNames] is an array of strings representing new categories to create and
   /// subsequently include in the category group.
+  ///
+  /// Reference: https://lunchmoney.dev/#create-category-group
   Future<int> createCategoryGroup({
     required String name,
     String? description,
@@ -117,6 +129,8 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   ///
   /// [categoryNames] is an array of strings representing new categories to create and
   /// subsequently include in the category group.
+  ///
+  /// Reference: https://lunchmoney.dev/#add-to-category-group
   Future<Category> addToCategoryGroup(
     int groupID, {
     List<int>? categoryIDs,
@@ -156,6 +170,10 @@ class CategoryRoute extends LunchMoneyBaseRoute {
   /// ```
   ///
   /// Throws [UnknownResponseError] if the response is anything else.
+  ///
+  /// Reference:
+  /// https://lunchmoney.dev/#delete-category
+  /// https://lunchmoney.dev/#force-delete-category
   Future<dynamic> deleteCategory(int categoryID, {bool force = false}) async {
     final res = await lunchMoney.http.request("DELETE", "/categories/:$categoryID${force ? "/force" : ""}");
 

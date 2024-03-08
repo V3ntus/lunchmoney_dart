@@ -6,10 +6,14 @@ import 'package:lunchmoney/src/enums.dart';
 import 'package:lunchmoney/src/api/models/asset.dart';
 
 /// A route class holding helper methods to send asset requests to the API.
+///
+/// Reference: https://lunchmoney.dev/#assets
 class AssetRoute extends LunchMoneyBaseRoute {
   AssetRoute(super.lunchMoney);
 
   /// Use this endpoint to get a list of all manually-managed assets associated with the user's account.
+  ///
+  /// Reference: https://lunchmoney.dev/#get-all-assets
   Future<List<Asset>> get assets async =>
       ((await lunchMoney.http.request("GET", "/assets"))["assets"] as List<Map<String, dynamic>>)
           .map((e) => Asset.fromJson(e))
@@ -19,6 +23,8 @@ class AssetRoute extends LunchMoneyBaseRoute {
   /// `subtype` must not be more than 25 characters.
   /// `name` must not be more than 45 characters.
   /// `currency` must be a valid ISO4217 short code.
+  ///
+  /// Reference: https://lunchmoney.dev/#create-asset
   Future<Asset> createAsset({
     required AssetType type,
     required String name,
@@ -59,6 +65,8 @@ class AssetRoute extends LunchMoneyBaseRoute {
   }
 
   /// Use this endpoint to update a single asset.
+  ///
+  /// Reference: https://lunchmoney.dev/#update-asset
   Future<Asset> updateAsset(
     int id, {
     AssetType? type,

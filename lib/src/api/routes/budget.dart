@@ -4,6 +4,8 @@ import 'package:lunchmoney/src/constants.dart';
 import 'package:lunchmoney/src/api/models/budget.dart';
 
 /// A route class holding helper methods to send budget requests to the API.
+///
+/// Reference: https://lunchmoney.dev/#budget
 class BudgetRoute extends LunchMoneyBaseRoute {
   BudgetRoute(super.lunchMoney);
 
@@ -12,6 +14,8 @@ class BudgetRoute extends LunchMoneyBaseRoute {
   /// Lunch Money currently only supports monthly budgets, so your [startDate] and [endDate]
   /// should be the start and end of a month. (2024-04-01, 2024-04-30).
   /// [currency] should be a valid ISO4217 short code.
+  ///
+  /// Reference: https://lunchmoney.dev/#get-budget-summary
   Future<List<Budget>> budgets(DateTime startDate, DateTime endDate, {String? currency}) async {
     if (endDate.isBefore(startDate)) {
       throw ArgumentError.value(endDate, "endDate", "End date cannot be before start date");
@@ -22,7 +26,7 @@ class BudgetRoute extends LunchMoneyBaseRoute {
     final List<Map<String, dynamic>> res = await lunchMoney.http.request("GET", "/budgets", queryParameters: {
       "start_date": DateFormat('yyyy-MM-dd').format(startDate),
       "end_date": DateFormat('yyyy-MM-dd').format(endDate),
-      "currency": currency,
+      if (currency != null) "currency": currency,
     });
     return res.map((e) => Budget.fromJson(e)).toList();
   }
@@ -36,6 +40,8 @@ class BudgetRoute extends LunchMoneyBaseRoute {
   /// This is because setting a sub-category may also update the category group's overall budget.
   ///
   /// [currency] should be a valid ISO4217 short code.
+  ///
+  /// Reference: https://lunchmoney.dev/#upsert-budget
   Future<Map<String, dynamic>> upsertBudget({
     required DateTime startDate,
     required int categoryID,
@@ -56,6 +62,8 @@ class BudgetRoute extends LunchMoneyBaseRoute {
   }
 
   /// Use this endpoint to unset an existing budget for a particular category in a particular month.
+  ///
+  /// Reference: https://lunchmoney.dev/#remove-budget
   Future<bool> deleteBudget(DateTime startDate, int categoryID) async {
     return await lunchMoney.http.request("DELETE", "/budgets", queryParameters: {
       "start_date": DateFormat('yyyy-MM-dd').format(startDate),
