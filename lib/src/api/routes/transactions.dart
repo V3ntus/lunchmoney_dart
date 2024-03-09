@@ -174,14 +174,12 @@ class TransactionsRoute extends LunchMoneyBaseRoute {
   }) async {
     if ((limit ?? 0) > 1000) throw ArgumentError.value(limit, "limit", "Limit cannot be more than 1000");
 
-    if (startDate != null || endDate != null) {
-      if (!(startDate == null || endDate == null)) {
-        throw ArgumentError.value(
-          [startDate, endDate],
-          "startDate, endDate",
-          "startDate and endDate both need to present or both null. One cannot be present without the other",
-        );
-      }
+    if ((startDate == null && endDate != null) || (startDate != null && endDate == null)) {
+      throw ArgumentError.value(
+        [startDate, endDate],
+        "startDate, endDate",
+        "startDate and endDate both need to present or both null. One cannot be present without the other",
+      );
     }
 
     final queryParameters = {
