@@ -144,7 +144,7 @@ class BudgetConfig {
   final String currency;
 
   /// The amount converted to the user's primary currency.
-  final double toBase;
+  final num toBase;
 
   /// The auto-suggested budget config type.
   final BudgetSuggest autoSuggest;
@@ -177,7 +177,7 @@ class BudgetPartialRecurring {
 
   final String currency;
 
-  final double toBase;
+  final num toBase;
 
   BudgetPartialRecurring({
     required this.payee,

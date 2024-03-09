@@ -23,7 +23,7 @@ class Transaction implements LunchMoneyModel {
 
   /// The amount converted to the user's primary currency.
   /// If the multicurrency feature is not being used, to_base and amount will be the same.
-  final double toBase;
+  final num toBase;
 
   /// Unique identifier of associated category (see [Category])
   final int? categoryId;
