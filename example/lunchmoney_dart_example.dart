@@ -7,5 +7,6 @@ void main() async {
 
   final client = LunchMoney(env["API_KEY"]!);
 
-  print((await client.user.me).userName);
+  final transactions = await client.transactions.transactions(startDate: DateTime(2024, 2, 1), endDate: DateTime.now());
+  print(transactions.map((e) => "${e.payee} -> ${e.amount}").join("\n"));
 }
