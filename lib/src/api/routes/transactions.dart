@@ -199,7 +199,7 @@ class TransactionsRoute extends LunchMoneyBaseRoute {
     };
 
     final res = await lunchMoney.http.request("GET", "/transactions", queryParameters: queryParameters);
-    return (res["transactions"] as List<Map<String, dynamic>>).map((e) => Transaction.fromJson(e)).toList();
+    return (res["transactions"] as List).cast<Map<String, dynamic>>().map((e) => Transaction.fromJson(e)).toList();
   }
 
   /// Use this endpoint to retrieve details about a specific transaction by ID.
