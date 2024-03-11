@@ -35,13 +35,12 @@ class HTTPClient {
 
   /// Initiate a request. The access token gets injected into the Headers automatically.
   /// The API should return a JSON serializable object on normal error and success.
-  Future<dynamic> request(
-    String method,
-    String url, {
-    Map<String, dynamic>? queryParameters,
-    String? content,
-    Map<String, dynamic>? json,
-  }) async {
+  Future<dynamic> request(String method,
+      String url, {
+        Map<String, dynamic>? queryParameters,
+        String? content,
+        Map<String, dynamic>? json,
+      }) async {
     final response = (await _dio.request(
       url,
       queryParameters: queryParameters,
@@ -64,7 +63,10 @@ class HTTPClient {
       }
 
       return response;
-    } else {
+    } else if (response is List) {
+      return response;
+    }
+    else {
       try {
         return jsonDecode(response);
       } on FormatException {
