@@ -75,13 +75,14 @@ class Budget implements LunchMoneyModel {
       isIncome: data["is_income"],
       excludeFromBudget: data["exclude_from_budget"],
       excludeFromTotals: data["exclude_from_totals"],
-      data: Map.fromEntries((data["data"] as Map<String, Map>? ?? <String, Map>{})
+      data: Map.fromEntries((data["data"] as Map<String, dynamic>? ?? <String, Map>{})
           .entries
+          .where((e) => e.value is Map && (e.value as Map).keys.isNotEmpty)
           .map((e) => MapEntry(DateTime.parse(e.key), BudgetData.fromJson(e.value as Map<String, dynamic>)))),
       config: data["config"] != null ? BudgetConfig.fromJson(data["config"]) : null,
       order: data["order"],
       archived: data["archived"],
-      recurring: (data["recurring"]["list"] as List<Map<String, dynamic>>? ?? <Map<String, dynamic>>[])
+      recurring: List<Map<String, dynamic>>.from(data["recurring"]?["list"] as List? ?? <Map<String, dynamic>>[])
           .map((e) => BudgetPartialRecurring.fromJson(e))
           .toList(),
     );
@@ -90,17 +91,17 @@ class Budget implements LunchMoneyModel {
 
 class BudgetData {
   /// The budget amount, as set by the user. If empty, no budget has been set.
-  final double? budgetAmount;
+  final num? budgetAmount;
 
   /// The budget currency, as set by the user. If empty, no budget has been set.
   final String? budgetCurrency;
 
   /// The budget converted to the user's primary currency. If the multicurrency
   /// feature is not being used, budget_to_base and budget_amount will be the same. If empty, no budget has been set.
-  final double? budgetToBase;
+  final num? budgetToBase;
 
   /// The total amount spent in this category for this time period in the user's primary currency
-  final double spendingToBase;
+  final num spendingToBase;
 
   /// Number of transactions that make up "spending_to_base"
   final int numTransactions;

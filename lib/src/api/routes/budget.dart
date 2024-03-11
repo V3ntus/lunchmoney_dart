@@ -23,12 +23,12 @@ class BudgetRoute extends LunchMoneyBaseRoute {
 
     validateCurrency(currency);
 
-    final List<Map<String, dynamic>> res = await lunchMoney.http.request("GET", "/budgets", queryParameters: {
+    final List<dynamic> res = await lunchMoney.http.request("GET", "/budgets", queryParameters: {
       "start_date": DateFormat('yyyy-MM-dd').format(startDate),
       "end_date": DateFormat('yyyy-MM-dd').format(endDate),
       if (currency != null) "currency": currency,
     });
-    return res.map((e) => Budget.fromJson(e)).toList();
+    return List<Map<String, dynamic>>.from(res).map<Budget>((e) => Budget.fromJson(e)).toList();
   }
 
   /// Use this endpoint to update an existing budget or insert a new budget for a particular category and date.
@@ -68,6 +68,7 @@ class BudgetRoute extends LunchMoneyBaseRoute {
     return await lunchMoney.http.request("DELETE", "/budgets", queryParameters: {
       "start_date": DateFormat('yyyy-MM-dd').format(startDate),
       "category_id": categoryID,
-    })..toString().contains("true");
+    })
+      ..toString().contains("true");
   }
 }
